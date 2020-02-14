@@ -26,4 +26,6 @@ db.user.belongsToMany(db.role, {
   foreignKey: "userId",
   otherKey: "roleId"
 });
+// relasi antara books dan users
+
 module.exports = db;
