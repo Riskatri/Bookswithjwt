@@ -9,6 +9,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 exports.signup = asyncMiddleware(async (req, res) => {
   // Save User to Database
+  //signup
   console.log("Processing func -> SignUp");
   const user = await User.create({
     name: req.body.name,

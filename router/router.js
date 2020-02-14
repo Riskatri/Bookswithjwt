@@ -13,9 +13,11 @@ module.exports = function(app) {
     ],
     authController.signup
   );
-  app.post("/api/auth/signin", authController.signin);
+  app.post("/login", authController.signin);
   // get all user
-  app.get("/api/users", [authJwt.verifyToken], userController.users); // get 1 user according to roles
+  app.post("/users", [authJwt.verifyToken], userController.users); // get 1 user according to roles
+  app.get("/users", [authJwt.verifyToken], userController.users);
+
   app.get("/api/test/user", [authJwt.verifyToken], userController.userContent);
   app.get(
     "/api/test/pm",
