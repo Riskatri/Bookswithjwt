@@ -5,7 +5,7 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(morgan("common"));
-require("./router/router.js");
+require("./router/router.js")(app);
 // const db = require("./config/db.js");
 // const Role = db.role;
 
@@ -16,7 +16,7 @@ require("./router/router.js");
 // });
 //require('./app/route/project.route.js')(app);
 // Create a Server
-var server = app.listen(8081, "127.0.0.1", function() {
+var server = app.listen(8082, "127.0.0.1", function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log("App listening at http://%s:%s", host, port);

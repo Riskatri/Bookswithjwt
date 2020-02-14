@@ -6,7 +6,7 @@ const userController = require("../controller/userController.js");
 module.exports = function(app) {
   // Auth
   app.post(
-    "/api/auth/signup",
+    "/register",
     [
       verifySignUp.checkDuplicateUserNameOrEmail,
       verifySignUp.checkRolesExisted
