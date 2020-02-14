@@ -1,5 +1,5 @@
-const db = require("../config/db");
-const config = require("../config/config");
+const db = require("../config/db.js");
+const config = require("../config/config.js");
 const User = db.user;
 const Role = db.role;
 const asyncMiddleware = require("express-async-handler");

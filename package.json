@@ -2,7 +2,7 @@
   "name": "middleware",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +18,6 @@
     "morgan": "^1.9.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",
-    "sequelize": "^5.21.4",
-    "xpress": "^2.4.6"
+    "sequelize": "^5.21.4"
   }
 }

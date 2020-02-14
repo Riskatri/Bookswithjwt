@@ -1,6 +1,6 @@
 const db = require("../config/db.js");
-const app = require("../config/config.js");
-const ROLEs = app.ROLEs;
+const config = require("../config/config.js");
+const ROLEs = config.ROLEs;
 const User = db.user;
 
 checkDuplicateUserNameOrEmail = (req, res, next) => {
