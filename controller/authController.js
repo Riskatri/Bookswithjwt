@@ -32,7 +32,7 @@ exports.signup = asyncMiddleware(async (req, res) => {
   });
 });
 
-//exports.books ( id books, author, published_date, published_id,)
+//exports.books ( id books, author, published_date, publisher_id,)
 exports.book = asyncMiddleware(async (req, res) => {
   console.log("Processing func -> Book");
   const book = await Book.create({

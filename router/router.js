@@ -156,14 +156,7 @@ module.exports = function(app) {
     userController.adminBoard,
     function(req, res, next) {
       const book_id = req.params.id;
-      const {
-        title,
-        author,
-        published_date,
-        page,
-        language,
-        publisher_id
-      } = req.body;
+      // const {title,author, published_date,page,language, publisher_id } = req.body;
       model.Book.destroy({
         where: {
           id: book_id
