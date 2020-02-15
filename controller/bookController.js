@@ -9,6 +9,7 @@ const Op = db.Sequelize.Op;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+//get a book to database
 exports.book = asyncMiddleware(async (req, res) => {
   await Book.create({
     title: req.body.title,
@@ -22,15 +23,7 @@ exports.book = asyncMiddleware(async (req, res) => {
   });
 });
 
-// exports.tampilbuku = asyncMiddleware(async (req, res) => {
-//   const book = await Book.findAll({
-//     attributes: ["title", "author", "page", "language", "publisher_id"]
-//   });
-//   res.status(200).json({
-//     description: "Showing all book",
-//     book: book
-//   });
-// });
+//menampilkan sebuah buku
 exports.tampilbuku = asyncMiddleware(async (req, res) => {
   const book = await Book.findAll({
     attributes: [
@@ -48,6 +41,7 @@ exports.tampilbuku = asyncMiddleware(async (req, res) => {
   });
 });
 
+//mencari buku berdasarkan id
 exports.findbookbyid = asyncMiddleware(async (req, res) => {
   const book = await Book.findOne({
     attributes: [
