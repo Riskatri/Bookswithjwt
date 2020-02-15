@@ -21,6 +21,7 @@ exports.users = asyncMiddleware(async (req, res) => {
     user: user
   });
 });
+
 exports.userContent = asyncMiddleware(async (req, res) => {
   const user = await User.findOne({
     where: { id: req.userId },

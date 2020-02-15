@@ -33,27 +33,25 @@ exports.signup = asyncMiddleware(async (req, res) => {
 });
 
 //exports.books ( id books, author, published_date, publisher_id,)
-exports.book = asyncMiddleware(async (req, res) => {
-  console.log("Processing func -> Book");
-  const book = await Book.create({
-    title: req.body.title,
-    author: req.body.author,
-    published_date: req.body.published_date,
-    pages: req.body.pages,
-    publisher_id: publisher_id
-  });
-  const roles = await Role.findAll({
-    where: {
-      name: {
-        [Op.or]: req.body.roles
-      }
-    }
-  });
-  await book.setRoles(roles);
-  res.status(201).send({
-    status: "book has been create!"
-  });
-});
+//   const book = await Book.create({
+//     title: req.body.title,
+//     author: req.body.author,
+//     published_date: req.body.published_date,
+//     pages: req.body.pages,
+//     publisher_id: publisher_id
+//   });
+//   const users = await User.findAll({
+//     where: {
+//       name: {
+//         [Op.or]: req.body.users
+//       }
+//     }
+//   });
+//   await book.setUsers(users);
+//   res.status(201).send({
+//     status: "book has been create!"
+//   });
+// });
 
 exports.signin = asyncMiddleware(async (req, res) => {
   console.log("Sign-In");
