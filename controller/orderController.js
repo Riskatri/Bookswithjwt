@@ -74,6 +74,35 @@ exports.userContent = asyncMiddleware(async (req, res) => {
     user: user
   });
 });
+
+//book
+exports.bookContent = asyncMiddleware(async (req, res) => {
+  const book = await Book.findAll({
+    where: { id: req.userId },
+    attributes: ["name", "username", "email"],
+    include: [
+      {
+        model: Book,
+        attributes: [
+          "title",
+          "author",
+          "published_date",
+          "pages",
+          "language",
+          "publisher_id"
+        ],
+        through: {
+          attributes: ["userId", "roleId"]
+        }
+      }
+    ]
+  });
+  res.status(200).json({
+    description: "User Content Page",
+    user: user
+  });
+});
+
 exports.adminBoard = asyncMiddleware(async (req, res) => {
   const user = await User.findOne({
     where: { id: req.userId },
