@@ -14,7 +14,8 @@ exports.book = asyncMiddleware(async (req, res) => {
   await Book.create({
     title: req.body.title,
     author: req.body.author,
-    page: req.body.page,
+    published_date: req.body.published_date,
+    pages: req.body.pages,
     language: req.body.language,
     publisher_id: req.body.publisher_id
   });
@@ -23,7 +24,7 @@ exports.book = asyncMiddleware(async (req, res) => {
   });
 });
 
-//menampilkan sebuah buku
+//menampilkan semua buku
 exports.tampilbuku = asyncMiddleware(async (req, res) => {
   const book = await Book.findAll({
     attributes: [
