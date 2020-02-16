@@ -41,6 +41,7 @@ exports.userContent = asyncMiddleware(async (req, res) => {
     user: user
   });
 });
+
 exports.adminBoard = asyncMiddleware(async (req, res) => {
   const user = await User.findOne({
     where: { id: req.userId },
@@ -60,6 +61,7 @@ exports.adminBoard = asyncMiddleware(async (req, res) => {
     user: user
   });
 });
+
 exports.managementBoard = asyncMiddleware(async (req, res) => {
   const user = await User.findOne({
     where: { id: req.userId },

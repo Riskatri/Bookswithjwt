@@ -44,6 +44,7 @@ exports.tampilbuku = asyncMiddleware(async (req, res) => {
 //mencari buku berdasarkan id
 exports.findbookbyid = asyncMiddleware(async (req, res) => {
   const book = await Book.findOne({
+    where: { id: req.params.id },
     attributes: [
       "title",
       "author",
@@ -54,7 +55,7 @@ exports.findbookbyid = asyncMiddleware(async (req, res) => {
     ]
   });
   res.status(200).json({
-    description: "All Book",
+    description: "Buku yang diinput",
     book: book
   });
 });
