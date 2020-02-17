@@ -4,6 +4,7 @@ const authController = require("../controller/authController.js");
 const userController = require("../controller/userController.js");
 const orderController = require("../controller/orderController");
 const bookController = require("../controller/bookController");
+const validController = require("../controller/validController");
 
 module.exports = function(app) {
   // register dan login
@@ -25,6 +26,7 @@ module.exports = function(app) {
   app.post(
     "/books",
     [authJwt.verifyToken, authJwt.isAdmin],
+    validController.checkValidationBook,
     bookController.book
   );
 

@@ -26,32 +26,23 @@ exports.signup = asyncMiddleware(async (req, res) => {
       }
     }
   });
+  const sgMail = require("@sendgrid/mail");
+  sgMail.setApiKey(
+    `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`
+  );
+  const msg = {
+    to: req.body.email,
+    from: "secretadmirer@example.com",
+    subject: "Sending Verify Your account",
+    text: "thankyou for register",
+    html: "<strong>thankyou for register, enjoy with your code</strong>"
+  };
+  sgMail.send(msg);
   await user.setRoles(roles);
   res.status(201).send({
     status: "User registered successfully!"
   });
 });
-
-//exports.books ( id books, author, published_date, publisher_id,)
-//   const book = await Book.create({
-//     title: req.body.title,
-//     author: req.body.author,
-//     published_date: req.body.published_date,
-//     pages: req.body.pages,
-//     publisher_id: publisher_id
-//   });
-//   const users = await User.findAll({
-//     where: {
-//       name: {
-//         [Op.or]: req.body.users
-//       }
-//     }
-//   });
-//   await book.setUsers(users);
-//   res.status(201).send({
-//     status: "book has been create!"
-//   });
-// });
 
 exports.signin = asyncMiddleware(async (req, res) => {
   console.log("Sign-In");
