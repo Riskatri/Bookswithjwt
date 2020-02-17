@@ -27,6 +27,7 @@ module.exports = function(app) {
     "/books",
     [authJwt.verifyToken, authJwt.isAdmin],
     validController.checkValidationBook,
+    bookController.validate("book"),
     bookController.book
   );
 

@@ -4,24 +4,43 @@ const config = require("../config/config.js");
 // const Role = db.role;
 const Book = db.book;
 const asyncMiddleware = require("express-async-handler");
+const { validationResult } = require("express-validator/check");
+const { body } = require("express-validator/check");
 
 const Op = db.Sequelize.Op;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+exports.validate = method => {
+  switch (method) {
+    case "book": {
+      return [body("pages", "pages must be integer not a string").isInt()];
+    }
+  }
+};
+
 //get a book to database
-exports.book = asyncMiddleware(async (req, res) => {
-  await Book.create({
-    title: req.body.title,
-    author: req.body.author,
-    published_date: req.body.published_date,
-    pages: req.body.pages,
-    language: req.body.language,
-    publisher_id: req.body.publisher_id
-  });
-  res.status(201).send({
-    status: "Book has been created!"
-  });
+exports.book = asyncMiddleware(async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(404).json({ errors: errors.array() });
+      return;
+    }
+    await Book.create({
+      title: req.body.title,
+      author: req.body.author,
+      published_date: req.body.published_date,
+      pages: req.body.pages,
+      language: req.body.language,
+      publisher_id: req.body.publisher_id
+    });
+    res.status(201).send({
+      status: "Book has been created!"
+    });
+  } catch (err) {
+    return next(err);
+  }
 });
 
 //menampilkan semua buku

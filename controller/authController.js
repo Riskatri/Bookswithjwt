@@ -28,7 +28,7 @@ exports.signup = asyncMiddleware(async (req, res) => {
   });
   const sgMail = require("@sendgrid/mail");
   sgMail.setApiKey(
-    `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`
+    "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"
   );
   const msg = {
     to: req.body.email,
